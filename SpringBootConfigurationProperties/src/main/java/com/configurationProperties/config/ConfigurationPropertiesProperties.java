@@ -6,6 +6,22 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class ConfigurationPropertiesProperties {
 
 	private String email;
-	private int emailPort;
+	private String emailPort;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmailPort() {
+		return emailPort;
+	}
+
+	public void setEmailPort(String emailPort) {
+		this.emailPort = emailPort;
+	}
 
 }
