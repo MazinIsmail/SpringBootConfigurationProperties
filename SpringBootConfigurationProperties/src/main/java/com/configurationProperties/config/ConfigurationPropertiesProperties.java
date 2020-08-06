@@ -1,5 +1,6 @@
 package com.configurationProperties.config;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,6 +12,7 @@ public class ConfigurationPropertiesProperties {
 	private String emailPort;
 	private Map<String, String> additionalHeaders;
 	private CredentialsProperties credentials;
+	private List<String> propertyList;
 
 	public String getEmail() {
 		return email;
@@ -42,6 +44,14 @@ public class ConfigurationPropertiesProperties {
 
 	public void setCredentials(CredentialsProperties credentials) {
 		this.credentials = credentials;
+	}
+
+	public List<String> getPropertyList() {
+		return propertyList;
+	}
+
+	public void setPropertyList(List<String> propertyList) {
+		this.propertyList = propertyList;
 	}
 
 }
