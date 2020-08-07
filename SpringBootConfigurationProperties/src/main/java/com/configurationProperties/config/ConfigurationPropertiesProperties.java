@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties
+@RefreshScope
 public class ConfigurationPropertiesProperties {
 
 	private String email;
@@ -19,6 +21,7 @@ public class ConfigurationPropertiesProperties {
 
 	@Bean
 	@ConfigurationProperties(prefix = "user.role.groupid")
+	@RefreshScope
 	public UserProperties getUserProperties() {
 		return new UserProperties();
 	}
