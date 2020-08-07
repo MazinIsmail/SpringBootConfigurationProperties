@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 @ConfigurationProperties
 public class ConfigurationPropertiesProperties {
 
@@ -13,6 +16,12 @@ public class ConfigurationPropertiesProperties {
 	private Map<String, String> additionalHeaders;
 	private CredentialsProperties credentials;
 	private List<String> propertyList;
+
+	@Bean
+	@ConfigurationProperties(prefix = "user.role.groupid")
+	public UserProperties getUserProperties() {
+		return new UserProperties();
+	}
 
 	public String getEmail() {
 		return email;
