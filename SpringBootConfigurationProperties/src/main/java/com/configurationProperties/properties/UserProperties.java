@@ -1,4 +1,4 @@
-package com.configurationProperties.config;
+package com.configurationProperties.properties;
 
 public class UserProperties {
 

@@ -1,12 +1,28 @@
-package com.configurationProperties.config;
+package com.configurationProperties.properties;
 
 import java.util.List;
 import java.util.Map;
+
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+/**
+ * Using @ConfigurationProperties helps to bind values of the resource
+ * properties or ymal files. Internally it uses the conversion service to
+ * convert the property values to appropriate Java data type object. This
+ * annotation can be used at class level and method level. By default it reads
+ * the application.properties always.
+ * 
+ * Here we can use the @validate and all validation annotations to validate the
+ * properties.
+ * 
+ * RefreshScope used to refresh/re-injected properties for every changes in
+ * file.
+ */
 
 @Configuration
 @ConfigurationProperties
@@ -14,7 +30,11 @@ import org.springframework.context.annotation.Configuration;
 public class ConfigurationPropertiesProperties {
 
 	private String email;
-	private String emailPort;
+
+	// Spring will auto convert
+	private int emailPort;
+	@NotEmpty
+	private double douValue;
 	private Map<String, String> additionalHeaders;
 	private CredentialsProperties credentials;
 	private List<String> propertyList;
@@ -34,12 +54,20 @@ public class ConfigurationPropertiesProperties {
 		this.email = email;
 	}
 
-	public String getEmailPort() {
+	public int getEmailPort() {
 		return emailPort;
 	}
 
-	public void setEmailPort(String emailPort) {
+	public void setEmailPort(int emailPort) {
 		this.emailPort = emailPort;
+	}
+
+	public double getDouValue() {
+		return douValue;
+	}
+
+	public void setDouValue(double douValue) {
+		this.douValue = douValue;
 	}
 
 	public Map<String, String> getAdditionalHeaders() {
@@ -64,6 +92,13 @@ public class ConfigurationPropertiesProperties {
 
 	public void setPropertyList(List<String> propertyList) {
 		this.propertyList = propertyList;
+	}
+
+	@Override
+	public String toString() {
+		return "ConfigurationPropertiesProperties [email=" + email + ", emailPort=" + emailPort + ", douValue="
+				+ douValue + ", additionalHeaders=" + additionalHeaders + ", credentials=" + credentials
+				+ ", propertyList=" + propertyList + "]";
 	}
 
 }

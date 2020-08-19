@@ -1,0 +1,1 @@
+Please copy and store the 'external.properties' and 'externalTwo.properties' from resource folder to the location mentioned in the application.
